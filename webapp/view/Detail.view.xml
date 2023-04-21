@@ -1,0 +1,137 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:semantic="sap.f.semantic" xmlns:smartTable="sap.ui.comp.smarttable"
+	controllerName="PR_MAINT_LHA.PR_MAINT_LHA.controller.Detail" displayBlock="true">
+	<Page xmlns:cd="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" id="page" title="Details"
+		class="sapUiResponsivePadding--header" backgroundDesign="Solid">
+		<content>
+			<Button icon="sap-icon://nav-back" type="Transparent" text="Back" press=".onBack"/>
+			<Toolbar ariaLabelledBy="Title3">
+				<!--<Title id="Title3" text="Items"/>-->
+				<ToolbarSpacer/>
+				<Button icon="sap-icon://edit" press=".onModify" text="Edit" type="Transparent"/>
+				<Button icon="sap-icon://pdf-reader" press=".onPreview" text="Export" type="Transparent"/>
+			</Toolbar>
+			<ObjectHeader title="Purchase Requisition N° {Banfn}" backgroundDesign="Transparent">
+				<attributes>
+					<ObjectAttribute title="Short Description of Purchasing Document Type" text="{Batxt}"/>
+					<ObjectAttribute title="Purchase Requisition Document Type" text="{Bsart}"/>
+					<ObjectAttribute title="Purchase Requisition Date" text="{Badat}"/>
+					<ObjectAttribute title="Category of delivery date" text="{Lpein}"/>
+					<ObjectAttribute title="Plant" text="{Werks}"/>
+					<ObjectAttribute title="G/L Account Number" text="{Sakto}"/>
+				</attributes>
+				<!--<statuses>-->
+				<!--	<ObjectStatus title="Status" text="In Stock" state="Success"/>-->
+				<!--</statuses>-->
+			</ObjectHeader>
+			<Toolbar ariaLabelledBy="Title3">
+				<Title id="Title3" text="Items"/>
+				<ToolbarSpacer/>
+				<!--<Button icon="sap-icon://add" press=".onAdd" text="Add an item"/>-->
+			</Toolbar>
+			<Table id="table1" items="{model>/results}" growing="false" growingThreshold="10" paste="onPaste" fixedLayout="Strict" autoPopinMode="false"
+				contextualWidth="Auto">
+				<items>
+					<ColumnListItem type="Active" id="item2">
+						<cells>
+							<Text id="text23" text="{model>Bnfpo}"/>
+							<Text id="text0" text="{model>Matnr}"/>
+							<Text id="text1" maxLines="0" text="{model>Txz01}"/>
+							<!--<Text id="text2" maxLines="0" text="{model>Matkl}"/>-->
+							<!--<Text id="text3" maxLines="0" text="{model>Ekorg}"/>-->
+							<!--<Text id="text4" maxLines="0" text="{model>Ekgrp}"/>-->
+							<!--<Text id="text5" maxLines="0" text="{model>Infnr}"/>-->
+							<!--<Text id="text6" maxLines="0" text="{model>Flief}"/>-->
+							<Text id="text7" maxLines="0" text="{model>Menge}"/>
+							<Text id="text8" maxLines="0" text="{model>Meins}"/>
+							<!--<Text id="text9" maxLines="0" text="{model>Preis}"/>-->
+							<!--<Text id="text10" maxLines="0" text="{model>Waers}"/>-->
+							<Text id="text11" maxLines="0" text="{model>Knttp}"/>
+							<Text id="text12" maxLines="0" text="{model>Konnr}"/>
+							<Text id="text13" maxLines="0" text="{model>Ktpnr}"/>
+						</cells>
+					</ColumnListItem>
+				</items>
+				<columns>
+					<Column id="column6">
+						<header>
+							<Label text="Item Number" id="label1"/>
+						</header>
+					</Column>
+					<Column id="column7">
+						<header>
+							<Label text="Mat.N°" id="label2"/>
+						</header>
+					</Column>
+					<Column id="column8">
+						<header>
+							<Label text="Short Desc." id="label3"/>
+						</header>
+					</Column>
+					<!--<Column id="column9">-->
+					<!--	<header>-->
+					<!--		<Label text="Purch Org" id="label4"/>-->
+					<!--	</header>-->
+					<!--</Column>-->
+					<!--<Column id="column10">-->
+					<!--	<header>-->
+					<!--		<Label text="Purch Grp" id="label5"/>-->
+					<!--	</header>-->
+					<!--</Column>-->
+					<!--<Column id="column11">-->
+					<!--	<header>-->
+					<!--		<Label text="N° of purch info record" id="label6"/>-->
+					<!--	</header>-->
+					<!--</Column>-->
+					<!--<Column id="column12">-->
+					<!--	<header>-->
+					<!--		<Label text="Fixed Vend" id="label7"/>-->
+					<!--	</header>-->
+					<!--</Column>-->
+					<Column id="column13">
+						<header>
+							<Label text="Quantity" id="label8"/>
+						</header>
+					</Column>
+					<Column id="column14">
+						<header>
+							<Label text="Measure Unit" id="label9"/>
+						</header>
+					</Column>
+					<!--<Column id="column15">-->
+					<!--	<header>-->
+					<!--		<Label text="Price" id="labe20"/>-->
+					<!--	</header>-->
+					<!--</Column>-->
+					<!--<Column id="column16">-->
+					<!--	<header>-->
+					<!--		<Label text="Price unit" id="labe21"/>-->
+					<!--	</header>-->
+					<!--</Column>-->
+					<!--<Column id="column17">-->
+					<!--	<header>-->
+					<!--		<Label text="Currency Key" id="labe22"/>-->
+					<!--	</header>-->
+					<!--</Column>-->
+					<Column id="column18">
+						<header>
+							<Label text="Acc Assignment Category" id="labe23"/>
+						</header>
+					</Column>
+					<Column id="column19">
+						<header>
+							<Label text="N° purch agreement" id="labe24"/>
+						</header>
+					</Column>
+					<Column id="column20">
+						<header>
+							<Label text="Item Number of Principal Purchase Agreement" id="labe25"/>
+						</header>
+					</Column>
+				</columns>
+			</Table>
+			<!--<VBox fitContainer="true">-->
+			<!--<smartTable:SmartTable id="table1" entitySet="ZPRITEMSSet" tableType="ResponsiveTable" useExportToExcel="false" beforeExport="onBeforeExport" useVariantManagement="false" enableAutoColumnWidth="false" useTablePersonalisation="true" header="Items" showRowCount="true" persistencyKey="SmartTableAnalytical_Explored" enableAutoBinding="true" demandPopin="true" class="sapUiResponsiveContentPadding" showDetailsButton="true" detailsButtonSetting="Medium,Low" initiallyVisibleFields="Bnfpo,Matnr,Txz01,Menge,Meins,Konnr,Ktpnr"/>-->
+			<!--	</VBox>-->
+		</content>
+	</Page>
+</mvc:View>

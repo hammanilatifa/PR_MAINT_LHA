@@ -1,0 +1,41 @@
+<mvc:View controllerName="PR_MAINT_LHA.PR_MAINT_LHA.controller.Master" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m"
+	xmlns:sfb="sap.ui.comp.smartfilterbar" xmlns:smartTable="sap.ui.comp.smarttable" xmlns:sv="sap.ui.comp.smartvariants">
+	<!--<Page id="page" title="{i18n>title}">-->
+	<Page xmlns:cd="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" id="page" title="{i18n>title}"
+		cd:w5g.dt.context="/ZPRHEADERSet">
+		<content>
+			<!--<VBox fitContainer="true">-->
+			<!--<FormattedText htmlText="{/HTML}"/>-->
+			<Text text="Hello 👋" backgroundDesign="Solid"/>
+			<!--</VBox>-->
+			<VBox fitContainer="true">
+				<sfb:SmartFilterBar id="smartFilterBar" entitySet="ZPRHEADERSet" basicSearchFieldName="Banfn" enableBasicSearch="true">
+					<sfb:controlConfiguration>
+						<sfb:ControlConfiguration key="Banfn" visibleInAdvancedArea="true"/>
+						<!--<sfb:ControlConfiguration key="Batxt" visibleInAdvancedArea="true"/>-->
+						<sfb:ControlConfiguration key="Werks" visibleInAdvancedArea="true"/>
+					</sfb:controlConfiguration>
+				</sfb:SmartFilterBar>
+				<smartTable:SmartTable id="LineItemsSmartTable" tableType="Table" entitySet="ZPRHEADERSet" smartFilterId="smartFilterBar"
+					showFullScreenButton="true" useExportToExcel="true" beforeExport="onBeforeExport" demandPopin="true" useVariantManagement="true"
+					useTablePersonalisation="true" header="Purchase Requisitions" showRowCount="true" persistencyKey="SmartTableAnalytical_Explored"
+					enableAutoBinding="true" initiallyVisibleFields="Banfn,Batxt,Werks,Bsart,Statu" selectionChange="handleSelectionChange" mode="SingleSelectMaster">
+					<smartTable:customToolbar>
+						<OverflowToolbar design="Transparent">
+							<ToolbarSpacer/>
+							<OverflowToolbarButton id="c_btn" icon="sap-icon://add-document" tooltip="Create a PR" press="onCrPress"/>
+							<OverflowToolbarButton id="stats_btn" icon="sap-icon://business-objects-experience" tooltip="View Statistics" text="Stats"/>
+							<!--<OverflowToolbarButton icon="sap-icon://filter" tooltip="Filter" text="Filter" press="onFilter"/>-->
+							<!--<OverflowToolbarButton icon="sap-icon://group-2" tooltip="Group" text="Group" press="onGroup"/>-->
+							<!--<OverflowToolbarButton icon="sap-icon://action-settings" tooltip="Column Settings" text="Column Settings" press="onColumns"/>-->
+						</OverflowToolbar>
+					</smartTable:customToolbar>
+					<Table id="Table0" selectionChange="handleSelectionChange" mode="SingleSelectMaster"/>
+					<smartTable:layoutData>
+						<FlexItemData growFactor="1" baseSize="0%"/>
+					</smartTable:layoutData>
+				</smartTable:SmartTable>
+			</VBox>
+		</content>
+	</Page>
+</mvc:View>

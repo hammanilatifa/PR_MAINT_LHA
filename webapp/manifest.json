@@ -1,0 +1,147 @@
+{
+	"_version": "1.12.0",
+	"sap.app": {
+		"id": "PR_MAINT_LHA.PR_MAINT_LHA",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"sourceTemplate": {
+			"id": "servicecatalog.connectivityComponentForManifest",
+			"version": "0.0.0"
+		},
+		"dataSources": {
+			"ZPR_V01_LHA_SRV": {
+				"uri": "/sap/opu/odata/sap/ZPR_V01_LHA_SRV/",
+				"type": "OData",
+				"settings": {
+					"localUri": "localService/ZPR_V01_LHA_SRV/metadata.xml",
+					"annotations": []
+				}
+			}
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		}
+	},
+	"sap.ui5": {
+		"flexEnabled": false,
+		"rootView": {
+			"viewName": "PR_MAINT_LHA.PR_MAINT_LHA.view.App",
+			"type": "XML",
+			"async": true,
+			"id": "App"
+		},
+		"dependencies": {
+			"minUI5Version": "1.65.6",
+			"libs": {
+				"sap.ui.layout": {},
+				"sap.ui.core": {},
+				"sap.m": {}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "PR_MAINT_LHA.PR_MAINT_LHA.i18n.i18n"
+				}
+			},
+			"": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneWay",
+					"defaultCountMode": "Request"
+				},
+				"dataSource": "ZPR_V01_LHA_SRV",
+				"preload": true
+			},
+			"@i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"uri": "i18n/i18n.properties"
+			}
+		},
+		"resources": {
+			"css": [
+				{
+					"uri": "css/style.css"
+				}
+			]
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"async": true,
+				"viewPath": "PR_MAINT_LHA.PR_MAINT_LHA.view",
+				"controlAggregation": "pages",
+				"controlId": "app",
+				"clearControlAggregation": false
+			},
+			"routes": [
+				{
+					"name": "TargetMaster",
+					"pattern": "",
+					"target": "TargetMaster"
+				},
+				{
+					"name": "TargetDetail",
+					"pattern": "Detail/{Banfn}",
+					"target": "TargetDetail"
+				},
+				{
+					"name": "create",
+					"pattern": "Create",
+					"target": "create"
+				},
+				{
+					"name": "TargetModify",
+					"pattern": "Modify/{Banfn}",
+					"target": "TargetModify"
+				}
+			],
+			"targets": {
+				"TargetMaster": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearControlAggregation": false,
+					"viewId": "TargetMaster",
+					"viewName": "Master"
+				},
+				"TargetDetail": {
+					"viewType": "XML",
+					"viewName": "Detail"
+				},
+				"create": {
+					"viewType": "XML",
+					"viewName": "CreatePR"
+				},
+				"TargetModify": {
+					"viewType": "XML",
+					"viewName": "ModifyPR"
+				}
+			}
+		}
+	}
+}

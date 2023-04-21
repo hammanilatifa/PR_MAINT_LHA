@@ -1,0 +1,7 @@
+<mvc:View controllerName="PR_MAINT_LHA.PR_MAINT_LHA.controller.App" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m">
+	<Shell id="shell">
+		<App id="app">
+		
+		</App>
+	</Shell>
+</mvc:View>
